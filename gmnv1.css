@@ -1,0 +1,361 @@
+/* -------------------- 1. Basic Reset & Variables -------------------- */
+:root {
+    --primary-color: #ff5722; /* 類似圖片中的橘色調 */
+    --text-dark: #333;
+    --text-light: #fff;
+    --bg-light: #f9f9f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* 讓錨點連結跳轉更平滑 */
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* -------------------- 2. Navigation Bar (Navbar) -------------------- */
+.navbar {
+    position: fixed; /* 固定在頁面上方 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(255, 255, 255, 0); /* 導覽列背景初始透明 */
+    color: var(--text-light);
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo-icon {
+    /* 這裡替換為實際的 logo 圖片樣式 */
+    width: 30px; 
+    height: 30px;
+    margin-right: 8px;
+    background-color: var(--primary-color); /* 佔位用 */
+    border-radius: 5px;
+}
+
+.navbar nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-button {
+    color: var(--text-light);
+    font-size: 1rem;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.nav-button:hover {
+    color: var(--primary-color);
+}
+
+/* -------------------- 3. Hero Section (首圖) -------------------- */
+.hero-section {
+    position: relative;
+    height: 100vh; /* 佔滿整個視口高度 */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5%;
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), /* 讓文字更清晰的漸層遮罩 */
+        url('png/yh.JPG') no-repeat center center/cover; /* 替換為實際的拉麵背景圖 */
+    color: var(--text-light);
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-section h1 {
+    font-family: 'Playfair Display', serif; /* 使用不同的字體強調標題 */
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.btn-read-more {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.btn-read-more:hover {
+    background-color: #e64a19; /* 略深的橘色 */
+}
+
+/* -------------------- 4. About Me Section -------------------- */
+.about-me-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 5%;
+    background-color: var(--text-light);
+    gap: 50px;
+}
+
+.about-content {
+    flex: 1;
+    max-width: 500px;
+}
+
+.about-me-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.about-tagline {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.about-image {
+    position: relative;
+    width: 350px; /* 圖片容器寬度 */
+    height: 400px; /* 圖片容器高度 */
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 2;
+    position: relative;
+    border-radius: 10px; /* 圖片本身的圓角 */
+}
+
+.orange-overlay {
+    position: absolute;
+    top: -50px; /* 調整位置，讓橘色漸層從角落出來 */
+    left: -50px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle at top left, rgba(255, 87, 34, 0.7), rgba(255, 87, 34, 0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* -------------------- 5. Featured Reviews -------------------- */
+.featured-reviews-section {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: var(--bg-light);
+}
+
+.featured-reviews-section h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* 允許在小螢幕上換行 */
+}
+
+.review-card {
+    width: 300px;
+    background-color: var(--text-light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.ramen-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.review-details {
+    padding: 15px;
+    min-height: 150px; /* 確保卡片高度一致 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.review-details h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.review-details p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* -------------------- 6. Footer -------------------- */
+.footer {
+    background-color: #333;
+    color: #ccc;
+    text-align: center;
+    padding: 20px 5%;
+}
+
+.social-icons {
+    margin-bottom: 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    margin: 0 15px;
+    /* 假設圖標是黑色的，需要用 filter 變成白色 */
+    filter: invert(100%); 
+}
+
+.footer p {
+    font-size: 0.9rem;
+}
+
+
+/* -------------------- 7. RWD (Media Queries) -------------------- */
+
+/* For Tablets and smaller desktops (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+
+    .about-me-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 5%;
+    }
+
+    .about-content, .about-image {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .about-image {
+        order: -1; /* 在小螢幕上把圖片放到文字上方 */
+        height: 350px;
+        margin-bottom: 30px;
+    }
+
+    .orange-overlay {
+        /* 在中心化佈局下調整漸層位置 */
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+    }
+    
+    .review-card {
+        width: 45%; /* 讓兩張卡片並排 */
+    }
+}
+
+/* For Mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 5%;
+        /* 在手機上可以給導覽列一個淺背景，以防文字被背景圖遮擋 */
+        background-color: rgba(0, 0, 0, 0.6); 
+    }
+
+    .logo span {
+        font-size: 1.2rem;
+    }
+
+    .navbar nav ul {
+        gap: 15px;
+    }
+
+    .hero-section {
+        justify-content: center;
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .reviews-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .review-card {
+        width: 90%; /* 在手機上讓卡片佔滿寬度 */
+        max-width: 350px;
+    }
+
+    .review-details {
+        min-height: auto; /* 手機上不需要固定高度 */
+    }
+
+    .about-image {
+        height: 250px;
+    }
+}
